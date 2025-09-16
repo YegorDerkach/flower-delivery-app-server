@@ -1,0 +1,165 @@
+{
+    "info": {
+      "name": "Flower Delivery API",
+      "_postman_id": "12345678-abcd-efgh-ijkl-987654321000",
+      "description": "Postman collection for Flower Delivery App",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Flower Shops",
+        "item": [
+          {
+            "name": "Get all shops",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "{{baseUrl}}/api/shops"
+            }
+          },
+          {
+            "name": "Create shop",
+            "request": {
+              "method": "POST",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"Rose Paradise\",\n  \"address\": \"Kyiv, Main St 10\",\n  \"phone\": \"+380501234567\"\n}"
+              },
+              "url": "{{baseUrl}}/api/shops"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Flowers",
+        "item": [
+          {
+            "name": "Get all flowers",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": "{{baseUrl}}/api/flowers"
+            }
+          },
+          {
+            "name": "Create flower",
+            "request": {
+              "method": "POST",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"shopId\": \"<insert_shopId>\",\n  \"name\": \"Red Roses Bouquet\",\n  \"description\": \"12 fresh red roses\",\n  \"price\": 600,\n  \"imageUrl\": \"https://example.com/roses.jpg\",\n  \"isBouquet\": true\n}"
+              },
+              "url": "{{baseUrl}}/api/flowers"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Orders",
+        "item": [
+          {
+            "name": "Get all orders",
+            "request": {
+              "method": "GET",
+              "url": "{{baseUrl}}/api/orders"
+            }
+          },
+          {
+            "name": "Get order by ID",
+            "request": {
+              "method": "GET",
+              "url": "{{baseUrl}}/api/orders/ORD-2025-0001"
+            }
+          },
+          {
+            "name": "Create order",
+            "request": {
+              "method": "POST",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"products\": [\n    { \"flowerId\": \"<insert_flowerId>\", \"quantity\": 2, \"price\": 300 }\n  ],\n  \"totalPrice\": 600,\n  \"email\": \"test@example.com\",\n  \"phone\": \"+380501234567\",\n  \"address\": \"Kyiv, Street 5\",\n  \"shopId\": \"<insert_shopId>\",\n  \"deliveryTime\": \"2025-09-06T12:00:00Z\"\n}"
+              },
+              "url": "{{baseUrl}}/api/orders"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Users",
+        "item": [
+          {
+            "name": "Get user by email",
+            "request": {
+              "method": "GET",
+              "url": "{{baseUrl}}/api/users/test@example.com"
+            }
+          },
+          {
+            "name": "Create user",
+            "request": {
+              "method": "POST",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"email\": \"test@example.com\",\n  \"phone\": \"+380501234567\"\n}"
+              },
+              "url": "{{baseUrl}}/api/users"
+            }
+          },
+          {
+            "name": "Add favorite flower",
+            "request": {
+              "method": "PUT",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"flowerId\": \"<insert_flowerId>\"\n}"
+              },
+              "url": "{{baseUrl}}/api/users/test@example.com/favorites"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Coupons",
+        "item": [
+          {
+            "name": "Get all coupons",
+            "request": {
+              "method": "GET",
+              "url": "{{baseUrl}}/api/coupons"
+            }
+          },
+          {
+            "name": "Get coupon by code",
+            "request": {
+              "method": "GET",
+              "url": "{{baseUrl}}/api/coupons/SPRING25"
+            }
+          },
+          {
+            "name": "Create coupon",
+            "request": {
+              "method": "POST",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"code\": \"SPRING25\",\n  \"discountType\": \"percent\",\n  \"discountValue\": 25,\n  \"validUntil\": \"2025-12-31\"\n}"
+              },
+              "url": "{{baseUrl}}/api/coupons"
+            }
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "key": "baseUrl",
+        "value": "http://localhost:3000"
+      }
+    ]
+  }
+  
